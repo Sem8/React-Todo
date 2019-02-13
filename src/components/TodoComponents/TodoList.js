@@ -9,8 +9,8 @@ function TodoList(props) {
     return (
         <div className='confusingTodoList'>
             {/* <h1>{props.aTodo.task}</h1> */}
-            {props.personTodo.map(eachTodo => (
-                <Todo secondConfusingTodoFile={eachTodo} />
+            {props.personTodo.map((eachTodo, index) => (
+                <Todo key={index} secondConfusingTodoFile={eachTodo} />
             ))}
 
         </div>

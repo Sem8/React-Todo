@@ -1,6 +1,7 @@
 import React from 'react';
 
 import TodoList from './components/TodoComponents/TodoList';
+import TodoForm from './components/TodoComponents/TodoForm';
 
 const semTodo = [
   {
@@ -25,6 +26,7 @@ const semTodo = [
   }
 ];
 
+
 class App extends React.Component {
   // you will need a place to store your state in this component.
   // design `App` to be the parent component of your application.
@@ -38,15 +40,44 @@ class App extends React.Component {
       completed: ''
     };
   }
+
+  addTask = e => {
+    e.preventDefault();
+    
+    const newPersonTodo = {
+      task: this.state.task,
+      id: this.state.id,
+      completed: this.state.completed
+    }
+    
+    this.setState({
+      personTodo: [...this.state.personTodo, newPersonTodo],
+      task: '',
+      id: '',
+      completed: ''
+    });
+  };
+
+  handleChanges = e => {
+    this.setState({
+      [e.target.task]: e.target.value
+    })
+  }
+
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
         <div className='todoList'>
-          <h3>Tortured by React with the ugly Todo list MVP</h3>
+          <h3>Tortured by React with an ugly Todo list MVP</h3>
           <TodoList personTodo={this.state.personTodo}/>
-
         </div>
+        <TodoForm
+        addTask={this.addTask}
+        task={this.state.task}
+        id={this.state.id}
+        completed={this.state.completed}
+         />
       </div>
     );
   }
