@@ -38,12 +38,13 @@ class App extends React.Component {
       task: '',
       id: '',
       completed: ''
+      
     };
   }
 
   addTask = e => {
     e.preventDefault();
-    
+    // console.log(e.target);    
     const newPersonTodo = {
       task: this.state.task,
       id: this.state.id,
@@ -70,11 +71,12 @@ class App extends React.Component {
         <h2>Welcome to your Todo App!</h2>
         <div className='todoList'>
           <h3>Tortured by React with an ugly Todo list MVP</h3>
-          <TodoList personTodo={this.state.personTodo}/>
+          <TodoList personTodo={this.state.personTodo} />
         </div>
         <TodoForm
         addTask={this.addTask}
         task={this.state.task}
+        handleChanges={this.handleChanges}
         id={this.state.id}
         completed={this.state.completed}
          />
