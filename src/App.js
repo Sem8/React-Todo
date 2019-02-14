@@ -34,11 +34,11 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      personTodo: semTodo,
-      task: '',
-      id: '',
-      completed: ''
-      
+      personTodo: semTodo,      
+      // task: '',
+      // id: '',
+      // completed: '',  
+      newTask: ''    
     };
   }
 
@@ -53,9 +53,10 @@ class App extends React.Component {
     
     this.setState({
       personTodo: [...this.state.personTodo, newPersonTodo],
-      task: '',
-      id: '',
-      completed: ''
+      // task: '',
+      // id: '',
+      // completed: ''
+      newTask: ''
     });
   };
 
