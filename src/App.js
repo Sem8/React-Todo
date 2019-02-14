@@ -44,26 +44,23 @@ class App extends React.Component {
 
   addTask = e => {
     e.preventDefault();
-    // console.log(e.target);    
-    const newPersonTodo = {
-      task: this.state.task,
-      id: this.state.id,
-      completed: this.state.completed
-    }
-    
+    // console.log(e.target); 
     this.setState({
-      personTodo: [...this.state.personTodo, newPersonTodo],
-      // task: '',
-      // id: '',
-      // completed: ''
-      newTask: ''
-    });
-  };
+      personTodo: [...this.state.personTodo, { task: this.state.newTask, id: Date.now(), completed: false }],
+      newTask: '' });   
+    // const newPersonTodo = {
+    //   newTask: this.state.newTask,
+    //   task: this.state.task
+    //   // id: this.state.id,
+    //   // completed: this.state.completed
+    // } 
+   
+  }; 
 
   handleChanges = e => {
     this.setState({
-      [e.target.task]: e.target.value
-    })
+      newTask: e.target.value
+    });
   }
 
   render() {
@@ -73,14 +70,17 @@ class App extends React.Component {
         <div className='todoList'>
           <h3>Tortured by React with an ugly Todo list MVP</h3>
           <TodoList personTodo={this.state.personTodo} />
-        </div>
+        
+
         <TodoForm
         addTask={this.addTask}
-        task={this.state.task}
+        // task={this.state.newTask}
         handleChanges={this.handleChanges}
-        id={this.state.id}
-        completed={this.state.completed}
+        // id={this.state.id}
+        // completed={this.state.completed}
+        value={this.state.newTask}
          />
+      </div>
       </div>
     );
   }
