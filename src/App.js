@@ -1,4 +1,5 @@
 import React from 'react';
+import './components/TodoComponents/Todo.css';
 
 import TodoList from './components/TodoComponents/TodoList';
 import TodoForm from './components/TodoComponents/TodoForm';
@@ -63,13 +64,27 @@ class App extends React.Component {
     });
   }
 
+  toggleItem = personTodoId => {
+    this.setState({
+      personTodo: this.state.personTodo.map(eachTodo => {
+        if(personTodoId === eachTodo.id) {
+          return { ...eachTodo, completed: !eachTodo.completed }
+        }
+        return eachTodo;
+      })
+    })
+  }
+
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
         <div className='todoList'>
           <h3>Tortured by React with an ugly Todo list MVP</h3>
-          <TodoList personTodo={this.state.personTodo} />
+          <TodoList 
+          personTodo={this.state.personTodo}
+          toggleItem={this.toggleItem} 
+          />
         
 
         <TodoForm

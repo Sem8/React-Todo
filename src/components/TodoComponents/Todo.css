@@ -1,0 +1,4 @@
+
+.confusingTodoDiv.completed {
+    text-decoration: line-through;
+}

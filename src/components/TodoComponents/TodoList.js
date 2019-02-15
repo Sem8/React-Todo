@@ -10,9 +10,8 @@ function TodoList(props) {
         <div className='confusingTodoList'>
             {/* <h1>{props.aTodo.task}</h1> */}
             {props.personTodo.map((eachTodo, index) => (
-                <Todo key={index} secondConfusingTodoFile={eachTodo} />
+                <Todo key={index} secondConfusingTodoFile={eachTodo} toggleItem={props.toggleItem}/>
             ))}
-
         </div>
     );
 };
