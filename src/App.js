@@ -7,22 +7,22 @@ import TodoForm from './components/TodoComponents/TodoForm';
 const semTodo = [
   {
     task: 'Understand React',
-    id: Date.now(),
+    id: 123,
     completed: false
   },
   {
     task: 'Understand props and inheritance in React',
-    id: Date.now(),
+    id: 124,
     completed: false
   },
   {
     task: 'Not feel lost with React',
-    id: Date.now(),
+    id: 125,
     completed: false
   },
   {
     task: 'Not hate React',
-    id: Date.now(),
+    id: 126,
     completed: false
   }
 ];
@@ -73,6 +73,14 @@ class App extends React.Component {
         return eachTodo;
       })
     })
+  };
+
+  clearATodo = e => {
+    e.preventDefault();
+    this.setState({
+      personTodo: this.state.personTodo.filter(eachTodo => !eachTodo.completed)
+    })
+
   }
 
   render() {
@@ -88,11 +96,10 @@ class App extends React.Component {
         
 
         <TodoForm
-        addTask={this.addTask}
+        addATask={this.addTask}
         // task={this.state.newTask}
-        handleChanges={this.handleChanges}
-        // id={this.state.id}
-        // completed={this.state.completed}
+        handleMyChanges={this.handleChanges}
+        handleClearATodo={this.clearATodo}
         value={this.state.newTask}
          />
       </div>
